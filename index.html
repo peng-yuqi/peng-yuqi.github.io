@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuqi Peng | Assistant Professor</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-soft: #4a4a45;
+    --ink-muted: #7a7a72;
+    --cream: #f7f4ef;
+    --cream-dark: #ede9e1;
+    --accent: #2d5a3d;
+    --accent-light: #4a8c63;
+    --accent-pale: #e8f1eb;
+    --rule: #d0ccc3;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247, 244, 239, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2.5rem;
+    height: 56px;
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 130px 2.5rem 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 4rem;
+    align-items: start;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-bio {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+  .hero-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hero-contact a {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .hero-contact a:hover { color: var(--accent); }
+  .hero-contact .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .hero-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 2rem;
+    position: sticky;
+    top: 76px;
+  }
+  .hero-card-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+  .edu-item {
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .edu-degree {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .edu-school {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-bottom: 1px;
+  }
+  .edu-year {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+  }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .section-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-top: 4px;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .section-intro {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    max-width: 580px;
+  }
+  .section-body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+  }
+
+  /* ── PAPERS ── */
+  .paper-list { display: flex; flex-direction: column; gap: 0; }
+  .paper-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .paper-item:first-child { padding-top: 0; }
+  .paper-item:last-child { border-bottom: none; }
+  .paper-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .paper-title a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .paper-title {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  .paper-authors {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .paper-journal {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+  .paper-note {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .paper-note::before {
+    content: '★';
+    color: #b8963e;
+  }
+  .paper-badge {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-pub {
+    background: var(--accent-pale);
+    color: var(--accent);
+    border: 1px solid #c0d9c9;
+  }
+  .badge-review {
+    background: #fdf3e3;
+    color: #8a6318;
+    border: 1px solid #edd9a3;
+  }
+  .badge-progress {
+    background: var(--cream-dark);
+    color: var(--ink-muted);
+    border: 1px solid var(--rule);
+  }
+
+  .paper-links { margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.74rem; }
+  .paper-links a, .paper-abstract summary {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .paper-links a:hover, .paper-abstract summary:hover { color: var(--accent-light); border-bottom-color: var(--accent-light); }
+  .paper-abstract { margin-top: 8px; font-size: 0.74rem; }
+  .paper-abstract summary { display: inline-block; list-style: none; }
+  .paper-abstract summary::-webkit-details-marker { display: none; }
+  .paper-abstract p {
+    margin-top: 10px;
+    padding: 12px 14px;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .paper-abstract .abstract-keywords { margin-top: 8px; font-size: 0.72rem; color: var(--ink-muted); }
+
+  /* ── SERVICE GRID ── */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .service-card-title {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .service-role {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+  .service-journal {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--cream-dark);
+    line-height: 1.5;
+  }
+  .service-journal:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  /* ── TEACHING ── */
+  .teaching-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .teaching-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--cream-dark);
+    gap: 1rem;
+  }
+  .teaching-item:last-child { border-bottom: none; }
+  .teaching-course {
+    font-size: 0.88rem;
+    color: var(--ink);
+    flex: 1;
+  }
+  .teaching-code {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+  .teaching-inst {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .skills-group-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.8rem;
+  }
+  .skills-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-pill {
+    font-size: 0.78rem;
+    padding: 4px 12px;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    color: var(--ink-soft);
+  }
+
+  /* ── AWARDS ── */
+  .awards-list { display: flex; flex-direction: column; gap: 0; }
+  .award-item {
+    padding: 1rem 0;
+    display: flex;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--cream-dark);
+    align-items: baseline;
+  }
+  .award-item:last-child { border-bottom: none; }
+  .award-year {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    width: 40px;
+    flex-shrink: 0;
+  }
+  .award-name {
+    font-size: 0.88rem;
+    color: var(--ink);
+    flex: 1;
+  }
+  .award-org {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .footer-note {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.22s; }
+  .delay-3 { animation-delay: 0.36s; }
+  .delay-4 { animation-delay: 0.5s; }
+
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding: 100px 1.5rem 40px; }
+    .hero-card { position: static; }
+    .section-header, .section-body { grid-template-columns: 1fr; gap: 1rem; }
+    .section { padding: 3rem 1.5rem; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#">Yuqi Peng</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#service">Service</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <p class="hero-eyebrow fade-in">Assistant Professor · Perdue School of Business</p>
+    <h1 class="fade-in delay-1">Yuqi<br><em>Peng</em></h1>
+    <p class="hero-bio fade-in delay-2">
+      I study how supply chain structure, regulation, and corporate strategy shape firm behavior — from eco-innovation and e-waste policy to mergers, acquisitions, and R&D productivity. I am a faculty member in the Department of Information Systems and Operations Management at Salisbury University.
+    </p>
+    <div class="hero-tags fade-in delay-3">
+      <span class="tag">Supply Chain Management</span>
+      <span class="tag">Innovation &amp; R&D</span>
+      <span class="tag">Socially Responsible Operations</span>
+      <span class="tag">Econometrics</span>
+    </div>
+    <div class="hero-contact fade-in delay-4">
+      <a href="mailto:yqpeng@salisbury.edu"><span class="dot"></span>yqpeng@salisbury.edu</a>
+      <a href="tel:4105462467"><span class="dot"></span>410-546-2467</a>
+      <a href="https://scholar.google.com/citations?user=sp0iGoAAAAAJ&hl=en" target="_blank" rel="noopener"><span class="dot"></span>Google Scholar Profile</a>
+      <a href="#"><span class="dot"></span>1101 Camden Ave., Salisbury MD 21801</a>
+    </div>
+  </div>
+  <div class="hero-card fade-in delay-2">
+    <p class="hero-card-label">Education</p>
+    <div class="edu-item">
+      <p class="edu-degree">Ph.D., Business Administration</p>
+      <p class="edu-school">University of South Carolina</p>
+      <p class="edu-year">2021 · Management Science</p>
+    </div>
+    <div class="edu-item">
+      <p class="edu-degree">M.Eng., Financial Information Service</p>
+      <p class="edu-school">Peking University, Beijing</p>
+      <p class="edu-year">2014</p>
+    </div>
+    <div class="edu-item">
+      <p class="edu-degree">B.S., Software Engineering</p>
+      <p class="edu-school">Huazhong University of Science &amp; Technology</p>
+      <p class="edu-year">2011</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section" id="research">
+  <div class="section-header">
+    <span class="section-label">Research</span>
+    <div>
+      <h2>Publications &amp; Working Papers</h2>
+      <p class="section-intro">Empirical research at the intersection of supply chain operations, environmental policy, and corporate strategy.</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div></div>
+    <div class="paper-list">
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">E-waste Take-back and Producer Eco-innovation: Empirical Analysis of State Regulations in the United States</p>
+          <p class="paper-authors">Peng, Y., Song, S., Venkataraman, S., and Dong, Y.</p>
+          <p class="paper-journal">Production and Operations Management · 2025</p>
+        </div>
+        <span class="paper-badge badge-pub">Published</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title"><a href="https://doi.org/10.1002/joom.70037" target="_blank" rel="noopener">Empirical Analyses Using Secondary Supply Chain Data</a></p>
+          <p class="paper-authors">Dong, Y., Zou, F., Song, S., Peng, Y., and Xu, K.</p>
+          <p class="paper-journal">Journal of Operations Management · 2026</p>
+        </div>
+        <span class="paper-badge badge-pub">Published</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title"><a href="https://doi.org/10.1108/IJOPM-05-2024-0379" target="_blank" rel="noopener">Outside-insiders: The Role of Supply Networks in Post-M&A Operational Performance</a></p>
+          <p class="paper-authors">Hu, W., Peng, Y., Shou, Y., and Wagner, S. M.</p>
+          <p class="paper-journal">International Journal of Operations &amp; Production Management · 2025</p>
+        </div>
+        <span class="paper-badge badge-pub">Published</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title"><a href="https://doi.org/10.1016/j.omega.2025.103483" target="_blank" rel="noopener">The Roles of Lean and Corporate Social Responsibility in Mergers and Acquisitions</a></p>
+          <p class="paper-authors">Peng, Y. and Zhang, Z.</p>
+          <p class="paper-journal">Omega · 2025</p>
+          <p class="paper-note">Best Theory-Driven Empirical Research Paper Award, DSI Annual Conference 2018</p>
+        </div>
+        <span class="paper-badge badge-pub">Published</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">Mobile Money, Stockouts and Informal Microenterprise Performance: Evidence from Sub-Saharan Africa</p>
+          <p class="paper-authors">Nan, W., Peng, Y., Park, M., &amp; Li, T.</p>
+          <p class="paper-journal">Industrial Management &amp; Data Systems · 2025</p>
+        </div>
+        <span class="paper-badge badge-pub">Published</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">Airline Revenue Management around Sporting Mega-Events: An Application Using Data from the Super Bowl XLIX</p>
+          <p class="paper-authors">Peng, Y., Ferguson, M. and Yilmaz, O.</p>
+          <p class="paper-journal">Journal of Revenue and Pricing Management · 2023</p>
+        </div>
+        <span class="paper-badge badge-pub">Published</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">Top Management Team AI Attention and Carbon Emission in Manufacturers: The Moderating Roles of Green Innovation and Industry IT Attention</p>
+          <p class="paper-authors">Luan, Z., Wu, Y., Zhang, Z., and Peng, Y.</p>
+          <p class="paper-journal">Industrial Management &amp; Data Systems · Forthcoming 2026</p>
+        </div>
+        <span class="paper-badge badge-pub">Forthcoming</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title"><a href="SSRN_Abstract.pdf" target="_blank" rel="noopener">Who Gets Selected? Supplier Selection under Global Trade Disruption</a></p>
+          <p class="paper-authors">Song, S., Goradia, D., Peng, Y., Rungtusanatham, J., and Dong, Y.</p>
+          <p class="paper-journal">Production and Operations Management · Under Review 2026</p>
+          <div class="paper-links"><a href="SSRN_Abstract.pdf" target="_blank" rel="noopener">Abstract (PDF) ↗</a></div>
+          <details class="paper-abstract">
+            <summary>Read abstract</summary>
+            <p>Trade uncertainty and conflicts increase the risks of sourcing from affected countries, yet firms continue to form new relationships with some suppliers in these markets. We take a supplier perspective and examine what enables these suppliers to remain viable sourcing partners despite these risks. Using global firm–supplier relationship data from FactSet, we employ a difference-in-differences (DiD) design that leverages the 2018 trade conflicts between the U.S. and several of its major trading partners, in which U.S.-initiated tariffs were followed by retaliatory tariffs, resulting in bilateral trade conflicts. We find a significant selection penalty for suppliers located in countries involved in the conflicts. Importantly, the effects extend beyond these geographic targets: trade shocks spill over through supply chain networks, reducing the likelihood of selecting suppliers connected to affected suppliers and countries. This finding suggests that geographic diversification alone may be insufficient for supply chain diversification when trade risks propagate through interconnected supply chains. We further show that supply chain embeddedness helps explain why some suppliers in affected countries remain selected: suppliers with stronger access and alternative channels to their customers’ countries experience a smaller decline in selection, as do suppliers with more localized and deeply established supply bases in their home countries, despite the conventional expectation that suppliers more deeply rooted in countries involved in trade conflicts would be more adversely affected. These findings show that suppliers embedded in supply chain networks are not only exposed to risks from trade conflicts but can also benefit from market access, production support, and supply chain coordination that help them withstand these risks and continue to participate in global supply chains.</p>
+            <p class="abstract-keywords" style="border:none;background:none;padding:0;margin-top:8px;"><strong>Keywords:</strong> New supplier selection, trade conflicts, supply chain embeddedness, network spillover, causal inference</p>
+          </details>
+        </div>
+        <span class="paper-badge badge-review">Under Review</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">Navigating E-Waste Regulations: Operational Challenges and Supply Chain Solutions for Producers</p>
+          <p class="paper-authors">with Y. Dong, S. Venkataraman, and M. Ferguson</p>
+        </div>
+        <span class="paper-badge badge-progress">Working Paper</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">Bilateral R&D Productivity and Supply Chain Networks</p>
+          <p class="paper-authors">with Y. Dong and S. Venkataraman</p>
+          <p class="paper-note">Honorable Mention, 2020 POM SCM Student Paper Competition</p>
+        </div>
+        <span class="paper-badge badge-progress">Working Paper</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">Sub-tier Supplier Political Risk and Firm Financial Performance: The Moderating Roles of Supply Chain Networks</p>
+          <p class="paper-authors">Peng, Y., Hu, W., Lee, B., Park, M., and Zhang, Z.</p>
+          <p class="paper-journal">Preparing for submission to Omega · 2026</p>
+        </div>
+        <span class="paper-badge badge-progress">Working Paper</span>
+      </div>
+
+      <div class="paper-item">
+        <div>
+          <p class="paper-title">The Effects of Mergers and Acquisitions on Operational Performance</p>
+          <p class="paper-authors">with Z. Zhang, Y. Shou, and Y. Dong</p>
+        </div>
+        <span class="paper-badge badge-progress">Working Paper</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section class="section" id="service">
+  <div class="section-header">
+    <span class="section-label">Service</span>
+    <div>
+      <h2>Editorial &amp; Professional Roles</h2>
+    </div>
+  </div>
+  <div class="section-body">
+    <div></div>
+    <div class="service-grid">
+      <div class="service-card">
+        <p class="service-card-title">Associate Editor</p>
+        <div class="service-journal">
+          <p class="service-role">Journal of Operations Management</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Sep 2023 – Present</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <p class="service-card-title">Editorial Review Board</p>
+        <div class="service-journal">
+          <p class="service-role">Intl. Journal of Operations &amp; Production Mgmt.</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Feb 2026 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Industrial Management &amp; Data Systems</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Jan 2025 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Journal of Digital Management</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Sep 2024 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Journal of Operations Management</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Sep 2022 – Sep 2023</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <p class="service-card-title">Ad Hoc Reviewer</p>
+        <div class="service-journal">
+          <p class="service-role">Production and Operations Management</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Jan 2022 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Intl. Journal of Production Research</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Nov 2025 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Journal of Purchasing and Supply Management</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Sep 2022 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Intl. Transactions in Operational Research</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Mar 2022 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Intl. Journal of Operations &amp; Production Mgmt.</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Dec 2025 – Feb 2026</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Industrial Management &amp; Data Systems</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Jan 2022 – Jan 2025</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <p class="service-card-title">Conference Service</p>
+        <div class="service-journal">
+          <p class="service-role">Track Chair, Strategic Management &amp; Entrepreneurship</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Decision Sciences Institute · 2026</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Reviewer · Decision Sciences Institute</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">2022, 2024</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Reviewer · Academy of Management</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">2020</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <p class="service-card-title">Department &amp; School</p>
+        <div class="service-journal">
+          <p class="service-role">Course Coordinator, INFO 281</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Spring 2022 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Search Committee, Asst. Professor of Information &amp; Decision Sciences</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Fall 2022; Fall 2023</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Student Development Committee</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Member 2022–2023 · Co-Chair 2024 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Search Committee, Dean of the Perdue School</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">2024, 2025</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Faculty Advisor, Honors Research/Creative Project &amp; Summer Research</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">2025, 2026</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <p class="service-card-title">University &amp; Community</p>
+        <div class="service-journal">
+          <p class="service-role">University Academic Assessment Committee</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Feb 2026 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">SU Strategic Planning — Data &amp; Implementation (Volunteer)</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Dec 2025 – Present</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">Faculty Marshal, Commencement</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">Fall 2022; Spring 2023</p>
+        </div>
+        <div class="service-journal">
+          <p class="service-role">TidalHealth Interdisciplinary Performance Improvement Committee</p>
+          <p style="font-size:0.72rem;color:var(--ink-muted)">2022 – Present</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section class="section" id="teaching">
+  <div class="section-header">
+    <span class="section-label">Teaching</span>
+    <div>
+      <h2>Courses Taught</h2>
+    </div>
+  </div>
+  <div class="section-body">
+    <div></div>
+    <div class="teaching-list">
+      <div class="teaching-item">
+        <div>
+          <p class="teaching-course">Business Application Development <span class="teaching-code">INFO 301</span></p>
+          <p style="font-size:0.78rem;color:var(--ink-soft)">Salisbury University</p>
+        </div>
+      </div>
+      <div class="teaching-item">
+        <div>
+          <p class="teaching-course">Intermediate Business Statistics <span class="teaching-code">INFO 281</span></p>
+          <p style="font-size:0.78rem;color:var(--ink-soft)">Salisbury University</p>
+        </div>
+      </div>
+      <div class="teaching-item">
+        <div>
+          <p class="teaching-course">Honors Research / Creative Project <span class="teaching-code">HONR 312</span></p>
+          <p style="font-size:0.78rem;color:var(--ink-soft)">Salisbury University · Independent Study</p>
+        </div>
+      </div>
+      <div class="teaching-item">
+        <div>
+          <p class="teaching-course">Introduction to Operations Management <span class="teaching-code">MGSC 395</span></p>
+          <p style="font-size:0.78rem;color:var(--ink-soft)">University of South Carolina · Fall 2018</p>
+        </div>
+
+      </div>
+      <div class="teaching-item">
+        <div>
+          <p class="teaching-course">Business Analytics Workshop — Tableau, Python, SAP</p>
+          <p style="font-size:0.78rem;color:var(--ink-soft)">University of South Carolina · Fall 2017</p>
+        </div>
+      </div>
+      <div class="teaching-item">
+        <div>
+          <p class="teaching-course">Recitation: Principles of Microeconomics <span class="teaching-code">ECON 221</span></p>
+          <p style="font-size:0.78rem;color:var(--ink-soft)">University of South Carolina · Spring 2015</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">Tools</span>
+    <div>
+      <h2>Technical Skills</h2>
+    </div>
+  </div>
+  <div class="section-body">
+    <div></div>
+    <div class="skills-grid">
+      <div>
+        <p class="skills-group-label">Proficient</p>
+        <div class="skills-pills">
+          <span class="skill-pill">Stata</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">R</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">Mendix</span>
+          <span class="skill-pill">Bloomberg SPLC</span>
+          <span class="skill-pill">SAP</span>
+          <span class="skill-pill">Tableau</span>
+          <span class="skill-pill">LaTeX</span>
+        </div>
+      </div>
+      <div>
+        <p class="skills-group-label">Intermediate</p>
+        <div class="skills-pills">
+          <span class="skill-pill">SAS</span>
+          <span class="skill-pill">MATLAB</span>
+        </div>
+        <p class="skills-group-label" style="margin-top:1.5rem">Certifications</p>
+        <div class="skills-pills">
+          <span class="skill-pill">Mendix Rapid Developer Certificate · 2022</span>
+          <span class="skill-pill">IBM Artificial Intelligence Certificate · 2020</span>
+          <span class="skill-pill">Business Analytics Certificate · USC 2021</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section" id="awards">
+  <div class="section-header">
+    <span class="section-label">Recognition</span>
+    <div>
+      <h2>Honors &amp; Awards</h2>
+    </div>
+  </div>
+  <div class="section-body">
+    <div></div>
+    <div class="awards-list">
+      <div class="award-item"><span class="award-year">2026</span><div><p class="award-name">SUF Professional Development Grant</p><p class="award-org">Salisbury University</p></div></div>
+      <div class="award-item"><span class="award-year">2026</span><div><p class="award-name">Summer Research Grant</p><p class="award-org">Salisbury University</p></div></div>
+      <div class="award-item"><span class="award-year">2026</span><div><p class="award-name">Summer Faculty Mentoring Fellowship</p><p class="award-org">Salisbury University</p></div></div>
+      <div class="award-item"><span class="award-year">2026</span><div><p class="award-name">Travel Grant</p><p class="award-org">Salisbury University</p></div></div>
+      <div class="award-item"><span class="award-year">2023</span><div><p class="award-name">Travel Grant &amp; Summer Research Grant</p><p class="award-org">Salisbury University</p></div></div>
+      <div class="award-item"><span class="award-year">2022</span><div><p class="award-name">Summer Research Grant</p><p class="award-org">Salisbury University</p></div></div>
+      <div class="award-item"><span class="award-year">2020</span><div><p class="award-name">Business Admin Fellowship</p><p class="award-org">University of South Carolina</p></div></div>
+      <div class="award-item"><span class="award-year">2020</span><div><p class="award-name">Honorable Mention — POM SCM Student Paper Competition</p><p class="award-org">Production and Operations Management Society</p></div></div>
+      <div class="award-item"><span class="award-year">2018</span><div><p class="award-name">Best Theory-Driven Empirical Research Paper Award</p><p class="award-org">Decision Science Institute Annual Conference</p></div></div>
+      <div class="award-item"><span class="award-year">2017</span><div><p class="award-name">Graduate School Travel Grant</p><p class="award-org">University of South Carolina</p></div></div>
+      <div class="award-item"><span class="award-year">2016</span><div><p class="award-name">Doctoral Fellowship (2016–2020)</p><p class="award-org">Darla Moore School of Business, USC</p></div></div>
+      <div class="award-item"><span class="award-year">2011</span><div><p class="award-name">Outstanding Graduate</p><p class="award-org">Huazhong University of Science &amp; Technology</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Yuqi Peng</span>
+  <span class="footer-note">Department of Information Systems &amp; Operations Management · Salisbury University · Last updated November 2026</span>
+</footer>
+
+</body>
+</html>
