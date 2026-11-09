@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://peng-yuqi.github.io/sitemap.xml
